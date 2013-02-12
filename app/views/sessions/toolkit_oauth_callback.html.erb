@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Authenticating User</title>
+  <%= csrf_meta_tag %>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/jsapi"></script>
+  <script type="text/javascript" src="https://www.accountchooser.com/client.js"></script>
+  <script type="text/javascript">
+  google.load('identitytoolkit', '2', {packages: ['store']});
+  jQuery(function() {
+    var homeUrl = '/';
+    var account = {
+      email: '<%= session[:user][:email] %>',
+      displayName: '<%= session[:user][:display_name] %>',
+      photoUrl: '<%= session[:user][:image] %>'
+    };
+    // Store the account then return to homeUrl.
+    window.google.identitytoolkit.storeAccount(account, homeUrl);
+  });
+  </script>
+</head>
+<body>
+<h2>Authenticating User</h2>
+</body>
+</html>
+

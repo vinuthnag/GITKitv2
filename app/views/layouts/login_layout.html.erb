@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GITKit V2 sample app</title>
+  <%= csrf_meta_tag %>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/jsapi"></script>
+<script type="text/javascript" src="//www.accountchooser.com/client.js"></script>
+<script type="text/javascript">
+  google.load("identitytoolkit", "2", {packages: ["ac"], language:"en"});
+</script>
+<script type="text/javascript">
+  $(function() {
+    window.google.identitytoolkit.setConfig({
+        developerKey: "AIzaSyB3VZOahFVjE9Do5hmhPypDukCC5xGsmCM",
+        companyName: "azri",
+        callbackUrl: "http://localhost:3000/verify",
+        realm: "",
+        userStatusUrl: "/user_status",
+        loginUrl: "/login",
+        signupUrl: "/new",
+        homeUrl: "/",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useContextParam: false,
+        language: "en"
+    });
+    window.google.identitytoolkit.init();
+  });
+</script>
+
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
